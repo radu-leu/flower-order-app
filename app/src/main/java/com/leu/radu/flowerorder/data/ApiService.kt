@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface ApiService {
 
-    @GET
+    @GET("/orders")
     fun getOrders(): Flowable<OrderResponse>
 }

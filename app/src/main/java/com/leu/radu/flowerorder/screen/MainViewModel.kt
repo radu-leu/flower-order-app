@@ -3,22 +3,24 @@ package com.leu.radu.flowerorder.screen
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import com.leu.radu.flowerorder.BaseViewModel
 import com.leu.radu.flowerorder.data.ApiService
 import com.leu.radu.flowerorder.data.Order
 import com.leu.radu.flowerorder.data.OrderResponse
 import com.leu.radu.flowerorder.utils.Outcome
+import io.reactivex.android.schedulers.AndroidSchedulers
 
-class MainViewModel(private val apiService: ApiService): ViewModel() {
+class MainViewModel(private val apiService: ApiService): BaseViewModel() {
 
     private val ordersLiveData: MutableLiveData<Outcome<List<Order>>> = MutableLiveData()
 
     fun getOrdersLiveData() = ordersLiveData as LiveData<Outcome<List<Order>>>
 
     fun fetchOrders() {
-//        apiService.getOrders()
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe(this::onFetchOrderSuccess, this::onFetchOrderError)
-//            .apply { addDisposable(this) }
+        apiService.getOrders()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(this::onFetchOrderSuccess, this::onFetchOrderError)
+            .apply { addDisposable(this) }
     }
 
     private fun onFetchOrderSuccess(response: OrderResponse) {
@@ -27,5 +29,6 @@ class MainViewModel(private val apiService: ApiService): ViewModel() {
 
     private fun onFetchOrderError(throwable: Throwable) {
         //TODO: handle errors
+        throwable.message
     }
 }
