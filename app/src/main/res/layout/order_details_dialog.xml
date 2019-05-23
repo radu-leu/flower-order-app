@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:background="@color/background_gray"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.Guideline
+            android:id="@+id/detailsGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.35"/>
+
+    <TextView
+            android:id="@+id/detailsOrderLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order"
+            style="@style/TinyLabel"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:id="@+id/detailsOrderContentsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="1001 Yellow Daffodils"
+            style="@style/DetailsText"
+            app:layout_constraintTop_toBottomOf="@id/detailsOrderLabel"
+            app:layout_constraintStart_toStartOf="@id/detailsOrderLabel"/>
+
+    <TextView
+            android:id="@+id/detailsAddressLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/address"
+            style="@style/TinyLabel"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/detailsOrderContentsTextView"
+            app:layout_constraintStart_toStartOf="@id/detailsOrderLabel"/>
+
+    <TextView
+            android:id="@+id/detailsAddressTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="str. Muresului, nr. 13"
+            style="@style/DetailsText"
+            app:layout_constraintTop_toBottomOf="@id/detailsAddressLabel"
+            app:layout_constraintStart_toStartOf="@id/detailsAddressLabel"/>
+
+    <TextView
+            android:id="@+id/detailsDeliverToLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/deliver_to"
+            style="@style/TinyLabel"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/detailsAddressTextView"
+            app:layout_constraintStart_toStartOf="@id/detailsOrderLabel"/>
+
+    <TextView
+            android:id="@+id/detailsRecipientTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Cristina Toader"
+            style="@style/DetailsText"
+            app:layout_constraintTop_toBottomOf="@id/detailsDeliverToLabel"
+            app:layout_constraintStart_toStartOf="@id/detailsDeliverToLabel"/>
+
+    <TextView
+            android:id="@+id/detailsOrderNumberLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_number"
+            style="@style/TinyLabel"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/detailsRecipientTextView"
+            app:layout_constraintStart_toStartOf="@id/detailsOrderLabel"/>
+
+    <TextView
+            android:id="@+id/detailsOrderIdTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="173"
+            style="@style/DetailsText"
+            app:layout_constraintTop_toBottomOf="@id/detailsOrderNumberLabel"
+            app:layout_constraintStart_toStartOf="@id/detailsOrderNumberLabel"/>
+
+    <TextView
+            android:id="@+id/detailsReceiptNumberLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/receipt_number"
+            style="@style/TinyLabel"
+            app:layout_constraintBottom_toBottomOf="@id/detailsOrderNumberLabel"
+            app:layout_constraintStart_toStartOf="@id/detailsGuideline"/>
+
+    <TextView
+            android:id="@+id/detailsReceiptNumberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="7454312356"
+            style="@style/DetailsText"
+            app:layout_constraintTop_toBottomOf="@id/detailsReceiptNumberLabel"
+            app:layout_constraintStart_toStartOf="@id/detailsReceiptNumberLabel"/>
+
+    <TextView
+            android:id="@+id/detailsDeliveryTimeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delivery_time"
+            style="@style/TinyLabel"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/detailsOrderIdTextView"
+            app:layout_constraintStart_toStartOf="@id/detailsOrderLabel"/>
+
+    <TextView
+            android:id="@+id/detailsDeliveryTimeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="17:30"
+            style="@style/DetailsText"
+            app:layout_constraintTop_toBottomOf="@id/detailsDeliveryTimeLabel"
+            app:layout_constraintStart_toStartOf="@id/detailsDeliveryTimeLabel"/>
+
+    <TextView
+            android:id="@+id/detailsPaidInAdvanceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/paid_in_advance"
+            style="@style/TinyLabel"
+            app:layout_constraintStart_toStartOf="@id/detailsGuideline"
+            app:layout_constraintBottom_toBottomOf="@id/detailsDeliveryTimeLabel"/>
+
+    <TextView
+            android:id="@+id/detailsPaidInAdvanceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Yes"
+            style="@style/DetailsText"
+            app:layout_constraintTop_toBottomOf="@id/detailsPaidInAdvanceLabel"
+            app:layout_constraintStart_toStartOf="@id/detailsPaidInAdvanceLabel"/>
+
+    <TextView
+            android:id="@+id/detailsOrderStatusTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/white"
+            android:background="@color/order_pending"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            tools:text="Order fullfiled"
+            android:padding="4dp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailsDeliveryTimeTextView"/>
+
+    <ImageView
+            android:id="@+id/detailsCloseImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_close_24dp"
+            android:padding="12dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

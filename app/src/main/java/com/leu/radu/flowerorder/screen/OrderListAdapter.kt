@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import com.leu.radu.flowerorder.R
 import com.leu.radu.flowerorder.data.Order
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_mock_order.view.*
+import kotlinx.android.synthetic.main.item_order_card.view.*
 
-class OrderListAdapter(private var data: List<Order>) :
+class OrderListAdapter(private var data: List<Order>, private val orderClickListener: (Order) -> Unit) :
     RecyclerView.Adapter<OrderListAdapter.OrderViewHolder>() {
 
     fun updateOrders(orders: List<Order>) {
@@ -27,7 +27,7 @@ class OrderListAdapter(private var data: List<Order>) :
     override fun onCreateViewHolder(parent: ViewGroup,
                                     viewType: Int): OrderViewHolder {
         val cardView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_mock_order, parent, false) as CardView
+            .inflate(R.layout.item_order_card, parent, false) as CardView
         return OrderViewHolder(cardView)
     }
 
@@ -40,8 +40,9 @@ class OrderListAdapter(private var data: List<Order>) :
                 context.getString(R.string.order_contents, order.quantity, order.flower)
             containerView.orderDoneImageView.visibility =
                 if (order.fulfilled) View.VISIBLE else View.GONE
-            containerView.orderIdTextView.text =
-                 context.getString(R.string.order_number, order.id)
+            containerView.setOnClickListener {
+                orderClickListener(order)
+            }
         }
     }
 

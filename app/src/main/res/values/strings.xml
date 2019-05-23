@@ -4,5 +4,11 @@
     <string name="address">Address</string>
     <string name="deliver_to">Deliver to</string>
     <string name="order_contents">%d %ss</string>
-    <string name="order_number">#%d</string>
+    <string name="order_number">Order\nnumber</string>
+    <string name="receipt_number">Receipt\nnumber</string>
+    <string name="delivery_time">Delivery\ntime</string>
+    <string name="paid_in_advance">Paid in\nadvance</string>
+    <string name="order">Order</string>
+    <string name="order_fulfilled">Order fulfilled</string>
+    <string name="order_pending">Order pending</string>
 </resources>

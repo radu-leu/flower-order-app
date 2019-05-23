@@ -8,12 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="CardTinyLabel">
+    <style name="TinyLabel">
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
 
-    <style name="CardDetailsText">
+    <style name="DetailsText">
         <item name="android:textSize">15sp</item>
         <item name="android:textStyle">bold</item>
     </style>

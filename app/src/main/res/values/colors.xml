@@ -5,4 +5,5 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="background_gray">#EAEAEA</color>
+    <color name="order_pending">#FF9800</color>
 </resources>
