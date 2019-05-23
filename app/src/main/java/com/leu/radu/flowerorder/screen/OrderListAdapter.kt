@@ -1,32 +1,48 @@
 package com.leu.radu.flowerorder.screen
 
+import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.leu.radu.flowerorder.R
+import com.leu.radu.flowerorder.data.Order
+import kotlinx.android.extensions.LayoutContainer
+import kotlinx.android.synthetic.main.item_mock_order.view.*
 
-class OrderListAdapter(private var data: List<String>) :
+class OrderListAdapter(private var data: List<Order>) :
     RecyclerView.Adapter<OrderListAdapter.OrderViewHolder>() {
 
-    fun updateOrders(orders: List<String>) {
+    fun updateOrders(orders: List<Order>) {
         data = orders
         notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
-        holder.textView.text = data[position]
+        holder.bindData(data[position])
     }
 
     override fun getItemCount() = data.size
 
     override fun onCreateViewHolder(parent: ViewGroup,
                                     viewType: Int): OrderViewHolder {
-        val textView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_mock_order, parent, false) as TextView
-        return OrderViewHolder(textView)
+        val cardView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_mock_order, parent, false) as CardView
+        return OrderViewHolder(cardView)
     }
 
-    class OrderViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView)
+    inner class OrderViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+        fun bindData(order: Order) {
+            val context = containerView.context
+            containerView.orderAddressTextView.text = order.address
+            containerView.orderRecipientTextView.text = order.recipientName
+            containerView.orderContentsTextView.text =
+                context.getString(R.string.order_contents, order.quantity, order.flower)
+            containerView.orderDoneImageView.visibility =
+                if (order.fulfilled) View.VISIBLE else View.GONE
+            containerView.orderIdTextView.text =
+                 context.getString(R.string.order_number, order.id)
+        }
+    }
 
 }

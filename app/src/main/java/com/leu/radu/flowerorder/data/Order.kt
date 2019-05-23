@@ -7,7 +7,8 @@ class Order(
     @SerializedName("flower") val flower: String,
     @SerializedName("quantity") val quantity: Int,
     @SerializedName("address") val address: String,
-    @SerializedName("recipientName") val recipientName: String
+    @SerializedName("recipientName") val recipientName: String,
+    @SerializedName("fulfilled") val fulfilled: Boolean
 ) {
 
     override fun toString() = "Order $id: $quantity $flower"

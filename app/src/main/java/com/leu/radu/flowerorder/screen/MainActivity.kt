@@ -8,6 +8,7 @@ import com.leu.radu.flowerorder.R
 import com.leu.radu.flowerorder.data.Order
 import com.leu.radu.flowerorder.utils.Outcome
 import com.leu.radu.flowerorder.utils.observeNonNull
+import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity: AppCompatActivity() {
@@ -25,9 +26,16 @@ class MainActivity: AppCompatActivity() {
         initRecyclerView()
         mainViewModel.getOrdersLiveData().observeNonNull(this) { outcome ->
             when (outcome) {
-                is Outcome.Success -> updateOrdersList(outcome.data)
+                is Outcome.Success -> {
+                    updateOrdersList(outcome.data)
+                    swipeContainer.isRefreshing = false
+                }
             }
         }
+        swipeContainer.setOnRefreshListener {
+            mainViewModel.fetchOrders()
+        }
+        swipeContainer.isRefreshing = true
         mainViewModel.fetchOrders()
     }
 
@@ -43,7 +51,7 @@ class MainActivity: AppCompatActivity() {
     }
 
     private fun updateOrdersList(orders: List<Order>) {
-        viewAdapter.updateOrders(orders.map { it.toString() })
+        viewAdapter.updateOrders(orders)
     }
 
 }
